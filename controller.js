@@ -13,14 +13,25 @@ angular.module('myApp',[]).controller('myController',function($scope){
 	    var numberOfPilots = $('.pilot:checked').val();
 		if(numberOfPilots == 1){
 			$scope.planes = mustangs1;
-		}else{
+		}else if(numberOfPilots == 2){
 			$scope.planes = mustangs2;
+		}else if(numberOfPilots == 3){
+			$scope.planes = m21;
+		}else if(numberOfPilots == 4){
+			$scope.planes = m22;
+		}else if(numberOfPilots ==5){
+			$scope.planes = alpine1;
+		}else if(numberOfPilots == 6){
+			$scope.planes = alpine2;
+		}else if(numberOfPilots == 7){
+			$scope.planes = cj31;
+		}else if(numberOfPilots == 8){
+			$scope.planes = cj32;
 		}
 	}
 	
 	// Create a new google map in the html div with id = "map"
 	$scope.map = new google.maps.Map($('#map')[0],mapOption);
-	var geocoder = new google.maps.Geocoder();
 	var lat;
 	var lng;
 	// Set a departure location if the user enters one
@@ -62,7 +73,7 @@ angular.module('myApp',[]).controller('myController',function($scope){
 				  		fillColor: '#AA0000'
 					});
 				  	circle.bindTo('center', marker, 'position');
-				  	$scope.range = $scope.planes[$index].range;
+				  	$scope.flightRange = $scope.planes[$index].range;
 				// Else use the entered address
 				}else{
 					var pyrmont = {lat: lat, lng: lng};

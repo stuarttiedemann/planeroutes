@@ -78,11 +78,11 @@
 							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>    
 							  </ul>
 							  <div class="range">
-							  	<p>Range: {{range}}nm</p>
+							  	<p>Range: {{flightRange}}nm</p>
 							  </div>
 							  <div class="pilots">
-							  	<span><input class="pilot"type="radio" name="pilots" checked="checked" value="1">1 Pilot</span>
-							  	<span><input type="radio" class="pilot" name="pilots" value="2">2 Pilots</span>
+							  	<span><input class="pilot"type="radio" name="pilots" checked="checked" value="3">1 Pilot</span>
+							  	<span><input type="radio" class="pilot" name="pilots" value="4">2 Pilots</span>
 							  </div>
 							</div>
 						</div>
@@ -98,7 +98,22 @@
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
-							Test 3
+							<div class="dropdown">
+							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Passengers
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dLabel">
+							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>    
+							  </ul>
+							  <div class="range">
+							  	<p>Range: {{flightRange}}nm</p>
+							  </div>
+							  <div class="pilots">
+							  	<span><input class="pilot"type="radio" name="pilots" checked="checked" value="5">1 Pilot</span>
+							  	<span><input type="radio" class="pilot" name="pilots" value="6">2 Pilots</span>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -112,7 +127,22 @@
 					</div>
 					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 						<div class="panel-body">
-							Test 4
+							<div class="dropdown">
+							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Passengers
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dLabel">
+							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>    
+							  </ul>
+							  <div class="range">
+							  	<p>Range: {{flightRange}}nm</p>
+							  </div>
+							  <div class="pilots">
+							  	<span><input class="pilot"type="radio" name="pilots" checked="checked" value="7">1 Pilot</span>
+							  	<span><input type="radio" class="pilot" name="pilots" value="8">2 Pilots</span>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</div>
