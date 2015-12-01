@@ -48,6 +48,7 @@ angular.module('myApp',[]).controller('myController',function($scope){
 	}
 
 			$scope.range = function($index){
+				console.log("Value of index is: "+$index);
 				var map;
 				var infowindow;
 				  // var address = $('#address').val;
@@ -69,9 +70,10 @@ angular.module('myApp',[]).controller('myController',function($scope){
 					});
 					var circle = new google.maps.Circle({
 				  		map: map,
-				  		radius: 1503824,    // 812 nm (1852 meters per nautical mile)
+				  		radius: 1852*$scope.planes[$index].range,    // 812 nm (1852 meters per nautical mile)
 				  		fillColor: '#AA0000'
 					});
+					$scope.range = $scope.planes[$index].range;
 					console.log(circle);
 				  	circle.bindTo('center', marker, 'position');
 				}else{
@@ -86,10 +88,11 @@ angular.module('myApp',[]).controller('myController',function($scope){
 				    })
 				    var circle = new google.maps.Circle({
 				  		map: map,
-				  		radius: 1503824,    // 812 nm (1852 meters per nautical mile)
+				  		radius: 1852*$scope.planes[$index].range,   // 812 nm (1852 meters per nautical mile)
 				  		fillColor: '#AA0000'
 					});
 				  	circle.bindTo('center', marker, 'position');
+				  	$scope.range = $scope.planes[$index].range;
 				}
 			}
 	})
