@@ -1,7 +1,6 @@
 // Angular App Module and Controller
 angular.module('myApp',[]).controller('myController',function($scope){
-	
-	
+	//Declare Global Variables
 	var address = '';
 	var apiKey="AIzaSyDp4_cWYV1Ztq2WJn8JFU0i-SzgXEaPwHE";
 	var mapOption = {
@@ -9,7 +8,7 @@ angular.module('myApp',[]).controller('myController',function($scope){
 		center: new google.maps.LatLng(40.000,-98.000),
 		mapTypeId: google.maps.mapTypeId
 	}
-
+	// Function to check how many pilots will be on the plane
 	$scope.planeSelector =function(){
 	    var numberOfPilots = $('.pilot:checked').val();
 		if(numberOfPilots == 1){
@@ -24,35 +23,26 @@ angular.module('myApp',[]).controller('myController',function($scope){
 	var geocoder = new google.maps.Geocoder();
 	var lat;
 	var lng;
+	// Set a departure location if the user enters one
 	$scope.geocodeAddress = function() {
 		address = $scope.address;
 		var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
-
+		// JSON return to provide lat and longitude of input city
 	    $.getJSON(url, function(data){
-	    	// console.log(data)
 	    	lat = data.results[0].geometry.location.lat;
 	    	lng = data.results[0].geometry.location.lng;
 	    	var map;
-			// var infowindow;
-			var pyrmont = {lat: lat, lng: lng};
-				  // map = new google.maps.Map(document.getElementById('map'), {
-				  // 	center: pyrmont,
-				  // 	zoom: 8
-				  // });
 	    	var marker = new google.maps.Marker({
 			map: $scope.map,
 			position: new google.maps.LatLng(lat, lng),
 	    	})
-	    	// $('#address').val('');
 	    })
 	}
-
+			// Function to draw range of selected plane and passenger combo on Google Map
 			$scope.range = function($index){
 				console.log("Value of index is: "+$index);
 				var map;
 				var infowindow;
-				  // var address = $('#address').val;
-				  console.log("The value of address is: "+address);
 				if(address ==''){
 					var mapOption = {
 					zoom:4,
