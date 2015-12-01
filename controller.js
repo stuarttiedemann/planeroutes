@@ -43,40 +43,40 @@ angular.module('myApp',[]).controller('myController',function($scope){
 				console.log("Value of index is: "+$index);
 				var map;
 				var infowindow;
+				//If no address is entered then use default coordinates
 				if(address ==''){
-					var mapOption = {
-					zoom:4,
-					center: new google.maps.LatLng(40.000,-98.000),
-					mapTypeId: google.maps.mapTypeId
-					}
 					var pyrmont = {lat:40.000, lng: -98.000};
 					map = new google.maps.Map(document.getElementById('map'), {
 				  	center: pyrmont,
 				  	zoom: 4
 				  	});
+				  	// Drop a marker at default coordinates
 					var marker = new google.maps.Marker({
 					map: $scope.map,
 					position: new google.maps.LatLng(40.000,-98.000),
 					});
-					var circle = new google.maps.Circle({
+					// Draw the range of the plane with passengers on map
+					circle = new google.maps.Circle({
 				  		map: map,
 				  		radius: 1852*$scope.planes[$index].range,    // 812 nm (1852 meters per nautical mile)
 				  		fillColor: '#AA0000'
 					});
-					$scope.range = $scope.planes[$index].range;
-					console.log(circle);
 				  	circle.bindTo('center', marker, 'position');
+				  	$scope.range = $scope.planes[$index].range;
+				// Else use the entered address
 				}else{
 					var pyrmont = {lat: lat, lng: lng};
 				  	map = new google.maps.Map(document.getElementById('map'), {
 				  	center: pyrmont,
 				  	zoom: 4
 				  	});
+				  	// Drop a marker at the coordinates of the entered city
 					var marker = new google.maps.Marker({
 						map: $scope.map,
 						position: new google.maps.LatLng(lat, lng)
 				    })
-				    var circle = new google.maps.Circle({
+				    // Draw the range of the plane with passengers on map
+				    circle = new google.maps.Circle({
 				  		map: map,
 				  		radius: 1852*$scope.planes[$index].range,   // 812 nm (1852 meters per nautical mile)
 				  		fillColor: '#AA0000'
