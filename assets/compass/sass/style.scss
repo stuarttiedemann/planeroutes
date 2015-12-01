@@ -1,0 +1,57 @@
+@import 'compass/css3';
+$background:#3f3f3f;
+$dark:#333;
+body{
+	width: 100%;
+	.heading{
+		background: $background;
+		color:#fff;
+		h2, h3{
+			font-family: 'Montserrat', sans-serif;
+			margin-left: 3%;
+			float:left;
+		}
+		#address{
+			margin-top: 1.5%;
+			margin-left:5%;
+			color:$dark;
+		}
+		button{
+			background: $dark;
+		}
+	}
+	.col-xs-4{
+		padding-right:0px;
+	}
+	#map{
+		height: 700px;
+	}
+	.panel{
+		border:none;
+	}
+	.panel-group{
+		background: $background;
+	}
+	.panel-default>.panel-heading{
+		background: $background;
+		border: none;
+	}
+	.panel-title{
+		color:#fff;
+	}
+	.panel-collapse{
+		border-radius: 0px;
+	}
+	.range{
+		width:25%;
+		float: right;
+	}
+	.pilots{
+		width: 25%;
+		float:right;
+		span{
+			width: 100%;
+			float: right;
+		}
+	}
+}
