@@ -46,9 +46,7 @@
 							    <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" aria-labelledby="dLabel">
-							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>
-							    
-							    
+							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>    
 							  </ul>
 							  <div class="range">
 							  	<p>Range: {{range}}nm</p>
@@ -71,7 +69,22 @@
 					</div>
 					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
-							Test 2
+							<div class="dropdown">
+							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Passengers
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dLabel">
+							    <li ng-repeat="plane in planes"><button ng-click="range($index)">{{plane.passenger}}</button></li>    
+							  </ul>
+							  <div class="range">
+							  	<p>Range: {{range}}nm</p>
+							  </div>
+							  <div class="pilots">
+							  	<span><input class="pilot"type="radio" name="pilots" checked="checked" value="1">1 Pilot</span>
+							  	<span><input type="radio" class="pilot" name="pilots" value="2">2 Pilots</span>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</div>

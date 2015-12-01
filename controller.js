@@ -40,7 +40,7 @@ angular.module('myApp',[]).controller('myController',function($scope){
 	}
 			// Function to draw range of selected plane and passenger combo on Google Map
 			$scope.range = function($index){
-				console.log("Value of index is: "+$index);
+				// console.log("Value of index is: "+$index);
 				var map;
 				var infowindow;
 				//If no address is entered then use default coordinates
