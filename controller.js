@@ -1,5 +1,34 @@
 // Angular App Module and Controller
-angular.module('myApp',[]).controller('myController',function($scope){
+var myApp = angular.module('myApp',['ngRoute']);
+
+myApp.config(function($routeProvider,$locationProvider){
+	$routeProvider.when('/',{
+		templateUrl: 'textron.html',
+		controller: 'myController'
+	}).
+	when('/mustang.html',{
+		templateUrl: 'mustang.html',
+		controller: 'myController'
+	}).
+	when('/m2.html',{
+		templateUrl: 'm2.html',
+		controller:'myController'
+	}).
+	when('/alpine.html',{
+		templateUrl: 'alpine.html',
+		controller: 'myController'
+	}).
+	when('/cj3.html',{
+		templateUrl: 'cj3.html',
+		controller: 'myController'
+	}).
+	otherwise({
+		redirectTo: '/'
+	});
+});
+
+
+myApp.controller('myController',function ($scope){
 	//Declare Global Variables
 	var address = '';
 	var apiKey="AIzaSyDp4_cWYV1Ztq2WJn8JFU0i-SzgXEaPwHE";
