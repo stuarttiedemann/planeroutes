@@ -100,23 +100,12 @@ myApp.controller('myController',function ($scope, $location){
 	    $.getJSON(url, function(data){
 	    	lat = data.results[0].geometry.location.lat;
 	    	lng = data.results[0].geometry.location.lng;
-	    	
-	 //    	var myLatLng= {lat: lat, lng: lng};
-	 //    	console.log(myLatLng);
-	 //    	console.log("A pin should be dropped now");
-	 //    	var marker = new google.maps.Marker({
-		// 	map: $scope.map,
-		// 	position: new google.maps.LatLng(lat, lng),
-		
-		// })
-	    	// console.log(marker);
 	    })
 	}
 			// Function to draw range of selected plane and passenger combo on Google Map
 			$scope.range = function($index){
 				console.log("Value of address: "+address);
 				var map;
-				// var infowindow;
 				//If no address is entered then use default coordinates
 				if(address ==''){
 					var pyrmont = {lat:40.000, lng: -98.000};
