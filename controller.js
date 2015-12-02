@@ -30,6 +30,8 @@ myApp.config(function($routeProvider,$locationProvider){
 
 myApp.controller('myController',function ($scope, $location){
 	//Declare Global Variables
+	var numberOfPilots = 0;
+	var pilotChecked = 0;
 	var address = '';
 	var apiKey="AIzaSyDp4_cWYV1Ztq2WJn8JFU0i-SzgXEaPwHE";
 	var mapOption = {
@@ -53,7 +55,9 @@ myApp.controller('myController',function ($scope, $location){
 
 	// Check to see if a pilot option has been selected.
 	// Else disable dropdown.
-	var pilotChecked = $('.pilot:checked').val();
+	
+	pilotChecked = $('.pilot:checked').val();
+	console.log("pilotChecked= "+pilotChecked);
 	if(pilotChecked == 1 || pilotChecked == 2){
 		$('#one').prop('disabled',false);
 	}else if(pilotChecked == 3 || pilotChecked == 4){
@@ -62,12 +66,14 @@ myApp.controller('myController',function ($scope, $location){
 		$('#three').prop('disabled',false);
 	}else if(pilotChecked == 7 || pilotChecked == 8){
 		$('#four').prop('disabled',false);
+	}else{
+		$('#one').prop('disabled',false);
 	}
 	
 
 	// Function to check how many pilots will be on the plane
 	$scope.planeSelector =function(){
-	    var numberOfPilots = $('.pilot:checked').val();
+	    numberOfPilots = $('.pilot:checked').val();
 		if(numberOfPilots == 1){
 			$scope.planes = mustangs1;
 		}else if(numberOfPilots == 2){
@@ -145,7 +151,7 @@ myApp.controller('myController',function ($scope, $location){
 				  		fillColor: '#AA0000'
 					});
 				  	circle.bindTo('center', marker, 'position');
-				  	$scope.range = $scope.planes[$index].range;
+				  	$scope.flightRange = $scope.planes[$index].range;
 				}
 			}
 
