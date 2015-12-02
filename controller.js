@@ -144,6 +144,17 @@ myApp.controller('myController',function ($scope, $location){
 	    $.getJSON(url, function(data){
 	    	lat = data.results[0].geometry.location.lat;
 	    	lng = data.results[0].geometry.location.lng;
+
+	    	var pyrmont = {lat: lat, lng: lng};
+				  	map = new google.maps.Map(document.getElementById('map'), {
+				  	center: pyrmont,
+				  	zoom: 4
+				  	});
+				  	// Drop a marker at the coordinates of the entered city
+					var marker = new google.maps.Marker({
+						map: map,
+						position: new google.maps.LatLng(lat, lng)
+				    })
 	    })
 	}
 			// Function to draw range of selected plane and passenger combo on Google Map
