@@ -20,7 +20,7 @@
 <body ng-controller="myController">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="image" ng-view>
+			<div class="callout-image text-center" ng-view>
 
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="headingOne">
-						<h4  class="panel-title">
+						<h4 class="panel-title">
 							<a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 								Citation Mustang
 							</a>
@@ -50,8 +50,8 @@
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-							<div class="dropdown">
-							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div ng-click="mustang()"class="dropdown">
+							  <button disabled ng-click="planeSelector()"id="one" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Passengers
 							    <span class="caret"></span>
 							  </button>
@@ -79,8 +79,8 @@
 					</div>
 					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
-							<div class="dropdown">
-							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div ng-click="m2Page()"class="dropdown">
+							  <button disabled ng-click="planeSelector()"id="two" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Passengers
 							    <span class="caret"></span>
 							  </button>
@@ -108,8 +108,8 @@
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
-							<div class="dropdown">
-							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div ng-click="alpine()" class="dropdown">
+							  <button disabled ng-click="planeSelector()"id="three" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Passengers
 							    <span class="caret"></span>
 							  </button>
@@ -137,8 +137,8 @@
 					</div>
 					<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 						<div class="panel-body">
-							<div class="dropdown">
-							  <button ng-click="planeSelector()"id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div ng-click="cj3Page()" class="dropdown">
+							  <button disabled ng-click="planeSelector()"id="four" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Passengers
 							    <span class="caret"></span>
 							  </button>

@@ -3,66 +3,89 @@ body {
   width: 100%;
 }
 /* line 6, ../compass/sass/style.scss */
+body .callout-image {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 400px;
+}
+/* line 12, ../compass/sass/style.scss */
+body .callout-image h1 {
+  background: #333;
+  color: #fff;
+  margin: 0px;
+  padding-top: 1%;
+  height: 70px;
+  font-family: 'Montserrat', sans-serif;
+}
+/* line 20, ../compass/sass/style.scss */
+body .callout-image img {
+  width: 100%;
+}
+/* line 24, ../compass/sass/style.scss */
 body .heading {
   background: #3f3f3f;
   color: #fff;
 }
-/* line 9, ../compass/sass/style.scss */
+/* line 27, ../compass/sass/style.scss */
 body .heading h2, body .heading h3 {
   font-family: 'Montserrat', sans-serif;
   margin-left: 3%;
   float: left;
 }
-/* line 14, ../compass/sass/style.scss */
+/* line 32, ../compass/sass/style.scss */
 body .heading #address {
   margin-top: 1.5%;
   margin-left: 5%;
   color: #333;
 }
-/* line 19, ../compass/sass/style.scss */
+/* line 37, ../compass/sass/style.scss */
 body .heading button {
   background: #333;
 }
-/* line 23, ../compass/sass/style.scss */
+/* line 41, ../compass/sass/style.scss */
 body .col-xs-4 {
   padding-right: 0px;
+  height: 700px;
+  background: #3f3f3f;
 }
-/* line 26, ../compass/sass/style.scss */
+/* line 46, ../compass/sass/style.scss */
 body #map {
   height: 700px;
 }
-/* line 29, ../compass/sass/style.scss */
+/* line 49, ../compass/sass/style.scss */
 body .panel {
   border: none;
 }
-/* line 32, ../compass/sass/style.scss */
+/* line 52, ../compass/sass/style.scss */
 body .panel-group {
   background: #3f3f3f;
 }
-/* line 35, ../compass/sass/style.scss */
+/* line 55, ../compass/sass/style.scss */
 body .panel-default > .panel-heading {
   background: #3f3f3f;
   border: none;
 }
-/* line 39, ../compass/sass/style.scss */
+/* line 59, ../compass/sass/style.scss */
 body .panel-title {
   color: #fff;
 }
-/* line 42, ../compass/sass/style.scss */
+/* line 62, ../compass/sass/style.scss */
 body .panel-collapse {
   border-radius: 0px;
 }
-/* line 45, ../compass/sass/style.scss */
+/* line 65, ../compass/sass/style.scss */
 body .range {
   width: 25%;
   float: right;
 }
-/* line 49, ../compass/sass/style.scss */
+/* line 69, ../compass/sass/style.scss */
 body .pilots {
   width: 25%;
   float: right;
 }
-/* line 52, ../compass/sass/style.scss */
+/* line 72, ../compass/sass/style.scss */
 body .pilots span {
   width: 100%;
   float: right;

@@ -28,7 +28,7 @@ myApp.config(function($routeProvider,$locationProvider){
 });
 
 
-myApp.controller('myController',function ($scope){
+myApp.controller('myController',function ($scope, $location){
 	//Declare Global Variables
 	var address = '';
 	var apiKey="AIzaSyDp4_cWYV1Ztq2WJn8JFU0i-SzgXEaPwHE";
@@ -37,6 +37,35 @@ myApp.controller('myController',function ($scope){
 		center: new google.maps.LatLng(40.000,-98.000),
 		mapTypeId: google.maps.mapTypeId
 	}
+	$scope.mustang = function(){
+		$location.path('mustang.html');
+	}
+	$scope.m2Page = function(){
+		$location.path('m2.html');
+	}
+	$scope.alpine = function(){
+		$location.path('alpine.html');
+	}
+	$scope.cj3Page = function(){
+		$location.path('cj3.html');
+	}
+
+
+	var pilotChecked = $('.pilot:checked').val();
+	if(pilotChecked == 1 || pilotChecked == 2){
+		$('#one').prop('disabled',false);
+	}else if(pilotChecked == 3 || pilotChecked == 4){
+		$('#two').prop('disabled',false);
+	}else if(pilotChecked == 5 || pilotChecked ==6){
+		$('#three').prop('disabled',false);
+	}else if(pilotChecked == 7 || pilotChecked == 8){
+		$('#four').prop('disabled',false);
+	}
+	console.log(pilotChecked);
+
+
+
+
 	// Function to check how many pilots will be on the plane
 	$scope.planeSelector =function(){
 	    var numberOfPilots = $('.pilot:checked').val();
@@ -65,6 +94,15 @@ myApp.controller('myController',function ($scope){
 	var lng;
 	// Set a departure location if the user enters one
 	$scope.geocodeAddress = function() {
+		if(pilotChecked == 1 || pilotChecked == 2){
+			$('#one').prop('disabled',false);
+		}else if(pilotChecked == 3 || pilotChecked == 4){
+			$('#two').prop('disabled',false);
+		}else if(pilotChecked == 5 || pilotChecked ==6){
+			$('#three').prop('disabled',false);
+		}else if(pilotChecked == 7 || pilotChecked == 8){
+			$('#four').prop('disabled',false);
+		}
 		address = $scope.address;
 		var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
 		// JSON return to provide lat and longitude of input city
@@ -125,4 +163,5 @@ myApp.controller('myController',function ($scope){
 				  	$scope.range = $scope.planes[$index].range;
 				}
 			}
+
 	})
