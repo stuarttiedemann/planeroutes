@@ -27,7 +27,6 @@ myApp.config(function($routeProvider,$locationProvider){
 	});
 });
 
-
 myApp.controller('myController',function ($scope, $location){
 	//Declare Global Variables
 	var numberOfPilots = 0;
@@ -39,7 +38,7 @@ myApp.controller('myController',function ($scope, $location){
 		center: new google.maps.LatLng(40.000,-98.000),
 		mapTypeId: google.maps.mapTypeId
 	}
-	
+	//  Next four functions call the partial html pages
 	$scope.mustang = function(){
 		$location.path('mustang.html');
 	}
@@ -55,24 +54,37 @@ myApp.controller('myController',function ($scope, $location){
 
 	// Check to see if a pilot option has been selected.
 	// Else disable dropdown.
-	
-	pilotChecked = $('.pilot:checked').val();
-	console.log("pilotChecked= "+pilotChecked);
-	if(pilotChecked == 1 || pilotChecked == 2){
-		$('#one').prop('disabled',false);
-	}else if(pilotChecked == 3 || pilotChecked == 4){
-		$('#two').prop('disabled',false);
-	}else if(pilotChecked == 5 || pilotChecked ==6){
-		$('#three').prop('disabled',false);
-	}else if(pilotChecked == 7 || pilotChecked == 8){
-		$('#four').prop('disabled',false);
-	}else{
-		$('#one').prop('disabled',false);
+	$scope.pilotIsChecked = function(){
+		pilotChecked = $('.pilot:checked').val();
+		console.log("pilotChecked= "+pilotChecked);
+		if(pilotChecked == 1 || pilotChecked == 2){
+			$('#one').prop('disabled',false);
+			$('#two').prop('disabled',true);
+			$('#three').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 3 || pilotChecked == 4){
+			$('#two').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#three').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 5 || pilotChecked ==6){
+			$('#three').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#two').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 7 || pilotChecked == 8){
+			$('#four').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#two').prop('disabled',true);
+			$('#three').prop('disabled',true);
+		}else{
+			console.log("Error");
+		}
 	}
-	
 
 	// Function to check how many pilots will be on the plane
 	$scope.planeSelector =function(){
+		$scope.pilotIsChecked();
 	    numberOfPilots = $('.pilot:checked').val();
 		if(numberOfPilots == 1){
 			$scope.planes = mustangs1;
@@ -111,7 +123,7 @@ myApp.controller('myController',function ($scope, $location){
 			// Function to draw range of selected plane and passenger combo on Google Map
 			$scope.range = function($index){
 				console.log("Value of address: "+address);
-				var map;
+				// var map;
 				//If no address is entered then use default coordinates
 				if(address ==''){
 					var pyrmont = {lat:40.000, lng: -98.000};
@@ -154,5 +166,4 @@ myApp.controller('myController',function ($scope, $location){
 				  	$scope.flightRange = $scope.planes[$index].range;
 				}
 			}
-
 	})
