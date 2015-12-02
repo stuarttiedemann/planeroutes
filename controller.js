@@ -37,6 +37,7 @@ myApp.controller('myController',function ($scope, $location){
 		center: new google.maps.LatLng(40.000,-98.000),
 		mapTypeId: google.maps.mapTypeId
 	}
+	
 	$scope.mustang = function(){
 		$location.path('mustang.html');
 	}
@@ -50,7 +51,8 @@ myApp.controller('myController',function ($scope, $location){
 		$location.path('cj3.html');
 	}
 
-
+	// Check to see if a pilot option has been selected.
+	// Else disable dropdown.
 	var pilotChecked = $('.pilot:checked').val();
 	if(pilotChecked == 1 || pilotChecked == 2){
 		$('#one').prop('disabled',false);
@@ -61,10 +63,7 @@ myApp.controller('myController',function ($scope, $location){
 	}else if(pilotChecked == 7 || pilotChecked == 8){
 		$('#four').prop('disabled',false);
 	}
-	console.log(pilotChecked);
-
-
-
+	
 
 	// Function to check how many pilots will be on the plane
 	$scope.planeSelector =function(){
@@ -94,33 +93,30 @@ myApp.controller('myController',function ($scope, $location){
 	var lng;
 	// Set a departure location if the user enters one
 	$scope.geocodeAddress = function() {
-		if(pilotChecked == 1 || pilotChecked == 2){
-			$('#one').prop('disabled',false);
-		}else if(pilotChecked == 3 || pilotChecked == 4){
-			$('#two').prop('disabled',false);
-		}else if(pilotChecked == 5 || pilotChecked ==6){
-			$('#three').prop('disabled',false);
-		}else if(pilotChecked == 7 || pilotChecked == 8){
-			$('#four').prop('disabled',false);
-		}
+		
 		address = $scope.address;
 		var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
 		// JSON return to provide lat and longitude of input city
 	    $.getJSON(url, function(data){
 	    	lat = data.results[0].geometry.location.lat;
 	    	lng = data.results[0].geometry.location.lng;
-	    	var map;
-	    	var marker = new google.maps.Marker({
-			map: $scope.map,
-			position: new google.maps.LatLng(lat, lng),
-	    	})
+	    	
+	 //    	var myLatLng= {lat: lat, lng: lng};
+	 //    	console.log(myLatLng);
+	 //    	console.log("A pin should be dropped now");
+	 //    	var marker = new google.maps.Marker({
+		// 	map: $scope.map,
+		// 	position: new google.maps.LatLng(lat, lng),
+		
+		// })
+	    	// console.log(marker);
 	    })
 	}
 			// Function to draw range of selected plane and passenger combo on Google Map
 			$scope.range = function($index){
-				// console.log("Value of index is: "+$index);
+				console.log("Value of address: "+address);
 				var map;
-				var infowindow;
+				// var infowindow;
 				//If no address is entered then use default coordinates
 				if(address ==''){
 					var pyrmont = {lat:40.000, lng: -98.000};
@@ -130,7 +126,7 @@ myApp.controller('myController',function ($scope, $location){
 				  	});
 				  	// Drop a marker at default coordinates
 					var marker = new google.maps.Marker({
-					map: $scope.map,
+					map: map,
 					position: new google.maps.LatLng(40.000,-98.000),
 					});
 					// Draw the range of the plane with passengers on map
@@ -150,7 +146,7 @@ myApp.controller('myController',function ($scope, $location){
 				  	});
 				  	// Drop a marker at the coordinates of the entered city
 					var marker = new google.maps.Marker({
-						map: $scope.map,
+						map: map,
 						position: new google.maps.LatLng(lat, lng)
 				    })
 				    // Draw the range of the plane with passengers on map
