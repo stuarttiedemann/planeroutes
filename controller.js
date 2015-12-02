@@ -52,6 +52,32 @@ myApp.controller('myController',function ($scope, $location){
 		$location.path('cj3.html');
 	}
 
+	pilotChecked = $('.pilot:checked').val();
+		console.log("pilotChecked= "+pilotChecked);
+		if(pilotChecked == 1 || pilotChecked == 2){
+			$('#one').prop('disabled',false);
+			$('#two').prop('disabled',true);
+			$('#three').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 3 || pilotChecked == 4){
+			$('#two').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#three').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 5 || pilotChecked ==6){
+			$('#three').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#two').prop('disabled',true);
+			$('#four').prop('disabled',true);
+		}else if(pilotChecked == 7 || pilotChecked == 8){
+			$('#four').prop('disabled',false);
+			$('#one').prop('disabled',true);
+			$('#two').prop('disabled',true);
+			$('#three').prop('disabled',true);
+		}else{
+			console.log("Error");
+		}
+
 	// Check to see if a pilot option has been selected.
 	// Else disable dropdown.
 	$scope.pilotIsChecked = function(){
@@ -111,7 +137,7 @@ myApp.controller('myController',function ($scope, $location){
 	var lng;
 	// Set a departure location if the user enters one
 	$scope.geocodeAddress = function() {
-		
+		$scope.pilotIsChecked();
 		address = $scope.address;
 		var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey;
 		// JSON return to provide lat and longitude of input city
